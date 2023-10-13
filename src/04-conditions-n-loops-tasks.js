@@ -8,6 +8,7 @@ function getFizzBuzz(num) {
   }
   return num;
 }
+
 function getFactorial(n) {
   if (n === 0 || n === 1) {
     return 1;
@@ -18,6 +19,7 @@ function getFactorial(n) {
   }
   return result;
 }
+
 function getSumBetweenNumbers(n1, n2) {
   let sum = 0;
   for (let i = n1; i <= n2; i += 1) {
@@ -25,9 +27,11 @@ function getSumBetweenNumbers(n1, n2) {
   }
   return sum;
 }
+
 function isTriangle(a, b, c) {
   return a + b > c && a + c > b && b + c > a;
 }
+
 function doRectanglesOverlap(rect1, rect2) {
   return (
     rect1.left < rect2.left + rect2.width
@@ -36,12 +40,16 @@ function doRectanglesOverlap(rect1, rect2) {
     && rect1.top + rect1.height > rect2.top
   );
 }
+
 function isInsideCircle(circle, point) {
-  const dx = point.x - circle.center.x;
-  const dy = point.y - circle.center.y;
-  const distanceSquared = dx * dx + dy * dy;
-  return distanceSquared <= circle.radius ** 2;
+  // const dx = point.x - circle.center.x;
+  // const dy = point.y - circle.center.y;
+  // const distanceSquared = dx * dx + dy * dy;
+  // return distanceSquared <= circle.radius ** 2;
+  const distance = Math.sqrt((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2);
+  return distance < circle.radius;
 }
+
 function findFirstSingleChar(str) {
   for (let i = 0; i < str.length; i += 1) {
     const char = str[i];
@@ -51,18 +59,22 @@ function findFirstSingleChar(str) {
   }
   return null;
 }
+
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
   const startBracket = isStartIncluded ? '[' : '(';
   const endBracket = isEndIncluded ? ']' : ')';
   return `${startBracket}${Math.min(a, b)}, ${Math.max(a, b)}${endBracket}`;
 }
+
 function reverseString(str) {
   return str.split('').reverse().join('');
 }
+
 function reverseInteger(num) {
   const reversedNum = parseInt(num.toString().split('').reverse().join(''), 10);
   return reversedNum * Math.sign(num);
 }
+
 function isCreditCardNumber(ccn) {
   const ccnStr = ccn.toString();
   let sum = 0;
@@ -70,20 +82,18 @@ function isCreditCardNumber(ccn) {
 
   for (let i = ccnStr.length - 1; i >= 0; i -= 1) {
     let digit = parseInt(ccnStr[i], 10);
-
     if (double) {
       digit *= 2;
       if (digit > 9) {
         digit -= 9;
       }
     }
-
     sum += digit;
     double = !double;
   }
-
   return sum % 10 === 0;
 }
+
 function getDigitalRoot(num) {
   let n = num;
   if (n < 10) {
@@ -96,6 +106,7 @@ function getDigitalRoot(num) {
   }
   return getDigitalRoot(sum);
 }
+
 function isBracketsBalanced(str) {
   const bracketPairs = {
     '(': ')',
@@ -116,9 +127,11 @@ function isBracketsBalanced(str) {
   }
   return stack.length === 0;
 }
+
 function toNaryString(num, n) {
   return num.toString(n);
 }
+
 function getCommonDirectoryPath(pathes) {
   if (pathes.length === 0) {
     return '';
@@ -139,6 +152,7 @@ function getCommonDirectoryPath(pathes) {
   }
   return `${commonPath.join('/')}/`;
 }
+
 function getMatrixProduct(m1, m2) {
   const A = m1.length;
   const B = m1[0].length;
@@ -156,6 +170,7 @@ function getMatrixProduct(m1, m2) {
   }
   return result;
 }
+
 function evaluateTicTacToePosition(position) {
   for (let i = 0; i < 3; i += 1) {
     if (position[i][0] === 'X' && position[i][1] === 'X' && position[i][2] === 'X') return 'X';
@@ -174,6 +189,7 @@ function evaluateTicTacToePosition(position) {
   }
   return undefined;
 }
+
 module.exports = {
   getFizzBuzz,
   getFactorial,
